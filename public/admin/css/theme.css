@@ -97,8 +97,6 @@ p {
     border-radius: 3px;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap');
-
 /* ----- Typography ----- */
 body {
     font-family: "Chakra Petch", sans-serif;

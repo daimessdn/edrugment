@@ -114,7 +114,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Yakin mau submit data RKO?</p>
+          <p>Yakin mau submit data RKO?<br /><br /></p>
           <p>*Segala data yang telah disubmit tidak dapat diubah maupun dikembalikan. Jadi, pastikan Anda sudah memastikan bahwa data yang diisi telah benar.
               <br />
               <br />
