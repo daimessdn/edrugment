@@ -52,6 +52,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // laman profil
     Route::get('/profil', 'ProfileController@index')->name('profile');
+    Route::post('profil/password/change', 'ProfileController@changePassword');
 
     // route lainnya
     Route::get('/users/all', 'OtherController@getAllUsers');
