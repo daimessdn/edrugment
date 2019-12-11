@@ -22,9 +22,10 @@ class HospitalController extends Controller
     public function detail($id)
     {
         $rs = Rs::find($id);
+        $userid = Rs::find($id)->user[0]->id;
         $data_rko = Rs::find($id)->user[0]->rko;
 
-        $datacount = count(DB::select('select * from rko_user where user_id = ? and submitted = 1 and approved = 0', [Auth::id()]));
+        $datacount = count(DB::select('select * from rko_user where user_id = ? and submitted = 1 and approved = 0', [$userid]));
 
         return view('rs_detail')->with('rs', $rs)->with('data_rko', $data_rko)->with('datacount', $datacount);
     }

@@ -65,6 +65,7 @@
           </div>
           
           <div class="card-body">
+            {{-- {{ $datacount }} --}}
             @if ($datacount != 0)
               <table class="table table-dark table-responsive" style="overflow-x: auto;">
                 <tr>
@@ -94,7 +95,6 @@
             @else
               Data RKO belum dikumpulkan oleh pihak rumah sakit yang bersangkutan.
             @endif
-
           </div>
         </div>
       </div>
