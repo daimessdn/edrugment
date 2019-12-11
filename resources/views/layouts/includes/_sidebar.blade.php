@@ -54,6 +54,15 @@
                   @endif
                </a>
             </li>
+
+            @if (auth()->user()->roleid == 0)
+               <li>
+                  <a href="/users">
+                     <i class="fas fa-users"></i>
+                     Registrasi Pengguna
+                  </a>
+               </li>
+            @endif
          </ul>
       </nav>
    </div>

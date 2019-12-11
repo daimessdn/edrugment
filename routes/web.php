@@ -54,6 +54,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/profil', 'ProfileController@index')->name('profile');
     Route::post('profil/password/change', 'ProfileController@changePassword');
 
+    // laman khusus admin
+    Route::get('users', 'OtherController@index');
+    Route::post('users/create', 'OtherController@registerNewUser');
+
     // route lainnya
     Route::get('/users/all', 'OtherController@getAllUsers');
 });
