@@ -28,11 +28,14 @@ class OtherController extends Controller
         $user->password = Hash::make('12345678');
         $user->roleid = $request->roleid;
 
-        $user->save();
-
-        return redirect('users')->with('sukses', 'Pembuatan sukses berhasil.
-                                                  Anda dapat login dengan email : '.$user->email.'
-                                                  dan password awal: 12345678');
+        if ($user->roleid != -999) {
+            $user->save();
+    
+            return redirect('users')->with('sukses', 'Pembuatan sukses berhasil.
+                                                      Anda dapat login dengan email : '.$user->email.'
+                                                      dan password awal: 12345678');
+        }
+        return redirect('users')->with('error', 'Role wajib dipilih.');
     }
    
     public function getAllUsers()
