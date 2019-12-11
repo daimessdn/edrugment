@@ -26,17 +26,26 @@
 				</div>
 		
 				<div class="card-body">
-					<form action="/profil/password/change" method="POST">
+					<form action="/users/create" method="POST">
 						@csrf
 						<div class="form-group">
-							<label for="new_pswd">Konfirmasi kata sandi baru</label>
-							<input type="password" name="new_pswd" class="form-control font-control-sm" required>
+							<label for="name">Nama user</label>
+							<input type="text" name="name" class="form-control font-control-sm" required>
 						</div>
 
 						<div class="form-group">
-							<label for="con_pswd">Konfirmasi kata sandi baru</label>
-							<input type="password" name="con_pswd" class="form-control font-control-sm" required>
+							<label for="email">Email</label>
+							<input type="email" name="email" class="form-control font-control-sm" required>
 						</div>
+
+            <div class="form-group">
+              <label for="role">Role</label>
+              <select class="form-control form-control-sm" name="roleid">
+                <option value="-999">Pilih...</option>
+                <option value="1">Apoteker</option>
+                <option value="2">Tender Produksi</option>
+              </select>
+            </div>
 
 						<button type="submit" class="btn btn-primary btn-sm">Submit</button>
 					</form>
@@ -80,8 +89,6 @@
                   </tr>
                 @endforeach
               </table>
-              
-              <a href="#" class="btn btn-primary btn-sm mt-2" data-toggle="modal" data-target="#prosesRKO">Proses RKO</a>
             @else
               Belum ada user lain yang didaftarkan.
             @endif
