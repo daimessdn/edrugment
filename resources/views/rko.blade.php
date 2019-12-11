@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+  Rencana Kebutuhan Obat (RKO)
+@endsection
+
 <!-- Modal -->
   <div class="modal fade" id="rkoAddModal" tabindex="-1" role="dialog" aria-labelledby="rkoAddModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

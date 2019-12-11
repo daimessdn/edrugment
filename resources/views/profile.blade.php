@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+  Profil
+@endsection
+
 @section('content')
 	<div class="row">
 

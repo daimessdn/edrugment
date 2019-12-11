@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+  Redistrasi User
+@endsection
+
 @section('content')
 	<div class="row">
 

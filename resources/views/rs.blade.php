@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+  Daftar Rumah Sakit
+@endsection
+
 @section('content')
   {{-- {{ dd($data_rko) }} --}}
   <div class="card">

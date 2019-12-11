@@ -1,5 +1,8 @@
 @extends('layouts.master')
 
+@section('title')
+  Detail Produksi Obat
+@endsection
 
 <div class="modal fade" id="prosesRKO" tabindex="-1" role="dialog" aria-labelledby="prosesRKOLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
