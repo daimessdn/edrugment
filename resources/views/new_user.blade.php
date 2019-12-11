@@ -62,19 +62,21 @@
 
                 @foreach ($users as $user)
                   <tr>
-                    <td>
-                      {{ $user->name }}<br>
-                      {{ $user->email }}
-                    </td>
-                    <td>
-                        @if ($user->roleid == 0)
-                            Administrator
-                        @elseif ($user->roleid == 1)
-                            Apoteker
-                        @elseif ($user->roleid == 2)
-                            Tender Produksi
-                        @endif
-                    </td>
+                    @if ($user->roleid != 0)
+                      <td>
+                        {{ $user->name }}<br>
+                        {{ $user->email }}
+                      </td>
+                      <td>
+                          @if ($user->roleid == 0)
+                              Administrator
+                          @elseif ($user->roleid == 1)
+                              Apoteker
+                          @elseif ($user->roleid == 2)
+                              Tender Produksi
+                          @endif
+                      </td>
+                    @endif
                   </tr>
                 @endforeach
               </table>
