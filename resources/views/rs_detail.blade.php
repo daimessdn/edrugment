@@ -65,7 +65,7 @@
           </div>
           
           <div class="card-body">
-            @if ($data_rko->count() != 0)
+            @if ($datacount != 0)
               <table class="table table-dark table-responsive" style="overflow-x: auto;">
                 <tr>
                   <th>Nama</th>

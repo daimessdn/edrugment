@@ -155,35 +155,39 @@
 
         {{-- tabel rencana kebutuhan obat --}}
         <div class="col-12">
-          <table class="table table-dark table-responsive" style="overflow-x: auto;">
-            <tr>
-              <th>Nama</th>
-              <th>Satuan</th>
-              <th>Harga Satuan</th>
-              <th>Stok sisa obat</th>
-              <th>Rata-Rata Pemakaian (per bulan)</th>
-              <th>Periode</th>
-            </tr>
-            @foreach ($data_rko as $rko)
-              @if($rko->pivot->submitted == 0)
-                <tr>
-                  <td>{{ $rko->med_name }}</td>
-                  <td>{{ $rko->unit }}</td>
-                  <td>{{ $rko->price }}</td>
-                  <td>{{ $rko->stock }}</td>
-                  <td>{{ $rko->use_avg }}</td>
-                <td>{{ $rko->pivot->periode1 }} - {{ $rko->pivot->periode2 }}</td>
-                  <td>
-                    <a href="/rko/{{ $rko->id }}/edit" class="btn btn-primary btn-sm">Edit</a>
-                    <a href="/rko/{{ $rko->id }}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?');">Hapus</a>
-                  </td>
-                </tr>
-              @endif
-            @endforeach
-          </table>
+          @if ($datacount != 0)
+            <table class="table table-dark table-responsive" style="overflow-x: auto;">
+              <tr>
+                <th>Nama</th>
+                <th>Satuan</th>
+                <th>Harga Satuan</th>
+                <th>Stok sisa obat</th>
+                <th>Rata-Rata Pemakaian (per bulan)</th>
+                <th>Periode</th>
+              </tr>
+              @foreach ($data_rko as $rko)
+                @if($rko->pivot->submitted == 0)
+                  <tr>
+                    <td>{{ $rko->med_name }}</td>
+                    <td>{{ $rko->unit }}</td>
+                    <td>{{ $rko->price }}</td>
+                    <td>{{ $rko->stock }}</td>
+                    <td>{{ $rko->use_avg }}</td>
+                  <td>{{ $rko->pivot->periode1 }} - {{ $rko->pivot->periode2 }}</td>
+                    <td>
+                      <a href="/rko/{{ $rko->id }}/edit" class="btn btn-primary btn-sm">Edit</a>
+                      <a href="/rko/{{ $rko->id }}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?');">Hapus</a>
+                    </td>
+                  </tr>
+                @endif
+              @endforeach
+            </table>
 
-          <a href="/rko/export" class="btn btn-primary btn-sm mt-2">Unduh data RKO</a> <br/>
-          <a href="#" class="btn btn-primary btn-sm mt-2"  data-toggle="modal" data-target="#submitModal">Submit data RKO</a>
+            <a href="/rko/export" class="btn btn-primary btn-sm mt-2">Unduh data RKO</a> <br/>
+            <a href="#" class="btn btn-primary btn-sm mt-2"  data-toggle="modal" data-target="#submitModal">Submit data RKO</a>
+          @else
+            <p>Belum ada data RKO yang diinput. Silahkan menambahkan data RKO melalui <strong>input manual</strong> atau <strong>import data melalui upload file excel</strong>.</p>
+          @endif
         </div>
       </div>
     </div>

@@ -18,7 +18,10 @@ class RkoController extends Controller
     public function index()
     {
         $data_rko = Auth::user()->rko;
-        return view('rko', ['data_rko' => $data_rko]);
+
+        $datacount = count(DB::select('select * from rko_user where user_id = ? and submitted = 0', [Auth::id()]));
+
+        return view('rko')->with('data_rko', $data_rko)->with('datacount', $datacount);
     }
 
     // submit data RKO

@@ -24,7 +24,9 @@ class HospitalController extends Controller
         $rs = Rs::find($id);
         $data_rko = Rs::find($id)->user[0]->rko;
 
-        return view('rs_detail')->with('rs', $rs)->with('data_rko', $data_rko);
+        $datacount = count(DB::select('select * from rko_user where user_id = ? and submitted = 1 and approved = 0', [Auth::id()]));
+
+        return view('rs_detail')->with('rs', $rs)->with('data_rko', $data_rko)->with('datacount', $datacount);
     }
 
     public function approve($id)
