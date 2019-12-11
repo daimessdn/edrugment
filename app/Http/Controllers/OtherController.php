@@ -31,7 +31,7 @@ class OtherController extends Controller
         $user->save();
 
         return redirect('users')->with('sukses', 'Pembuatan sukses berhasil.
-                                                  Anda dapat login dengan <strong>email : '.$user->email.'</strong>
+                                                  Anda dapat login dengan email : '.$user->email.'
                                                   dan password awal: 12345678');
     }
    

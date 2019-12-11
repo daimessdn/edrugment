@@ -61,11 +61,12 @@
             </h3>
           </div>
       
-          <div class="card-body">
+          <div class="card-body" >
             @if ($users->count() != 1)
-              <table class="table table-dark table-responsive" style="overflow-x: auto;">
+              <table class="table table-dark table-responsive" style="overflow: auto; height: 400px;">
                 <tr>
                   <th>Nama</th>
+                  <th>Email</th>
                   <th>Role</th>
                 </tr>
 
@@ -73,7 +74,9 @@
                   <tr>
                     @if ($user->roleid != 0)
                       <td>
-                        {{ $user->name }}<br>
+                        {{ $user->name }}
+                      </td>
+                      <td>
                         {{ $user->email }}
                       </td>
                       <td>
