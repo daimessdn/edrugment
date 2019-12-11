@@ -1,10 +1,10 @@
 <nav class="navbar-mobile">
     <div class="container-fluid">
         <ul class="navbar-mobile__list list-unstyled">
-            <li class="has-sub">
+            {{-- <li class="has-sub">
                 <a class="js-arrow" href="/">
                     <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                {{-- <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
                     <li>
                         <a href="/">Dashboard</a>
                     </li>
@@ -17,24 +17,53 @@
                     <li>
                         <a href="/profile">Profil</a>
                     </li>
-                </ul> --}}
-            </li>
+                </ul>
+            </li> --}}
             <li>
-                <a href="/rko">
-                    <i class="fas fa-medkit"></i>
-                    Rencana Kebutuhan Obat (RKO)
+                <a href="/dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dasbor
                 </a>
             </li>
-            <li>
-                <a href="/rs">
-                    <i class="fas fa-hospital-o"></i>
-                    Daftar Rumah Sakit
-                </a>
-            </li>
+
+            @if (auth()->user()->roleid == 1)
+                <li>
+                    <a href="/rko">
+                        <i class="fas fa-medkit"></i>
+                        Rencana Kebutuhan Obat (RKO)
+                    </a>
+                </li>
+            @endif
+            
+            @if (auth()->user()->roleid == 0)
+                <li>
+                    <a href="/rs">
+                        <i class="fas fa-hospital-o"></i>
+                        Daftar Rumah Sakit
+                    </a>
+                </li>
+            @endif
+
+            @if (auth()->user()->roleid == 2)
+                <li>
+                    <a href="/produksi">
+                        <i class="fas fa-truck"></i>
+                        Produksi Obat
+                    </a>
+                </li>
+            @endif
+            
             <li>
                 <a href="/profil">
-                    <i class="far fa-user"></i>
-                    Profil
+                    <i class="fas fa-user"></i>
+                    Profil 
+                    @if (auth()->user()->roleid == 0)
+                        Administrator
+                    @elseif (auth()->user()->roleid == 1)
+                        Apoteker
+                    @elseif (auth()->user()->roleid == 2)
+                        Tender Produksi
+                    @endif
                 </a>
             </li>
         </ul>
