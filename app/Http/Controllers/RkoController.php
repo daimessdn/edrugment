@@ -50,10 +50,12 @@ class RkoController extends Controller
         $rko->price = $request->price;
         $rko->stock = $request->stock;
         $rko->use_avg = $request->use_avg;
+        $rko->periode1 = $request->periode1;
+        $rko->periode2 = $request->periode2;
 
         $rko->save();
 
-        DB::insert('insert into rko_user (user_id, rko_id, periode1, periode2) values (?, ?, ?, ?)', [Auth::user()->id, $rko->id, $request->periode1, $request->periode2]);
+        DB::insert('insert into rko_user (user_id, rko_id) values (?, ?)', [Auth::user()->id, $rko->id]);
         return redirect('\rko')->with('sukses', 'Data obat berhasil ditambahkan');
     }
 

@@ -65,7 +65,7 @@
                       <td>{{ $rko->price }}</td>
                       <td>{{ $rko->stock }}</td>
                       <td>{{ $rko->use_avg }}</td>
-                      <td>{{ $rko->pivot->periode1 }} - {{ $rko->pivot->periode2 }}</td>
+                      <td>{{ $rko->periode1 }} - {{ $rko->periode2 }}</td>
                     </tr>
                   @endif
                 @endforeach

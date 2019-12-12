@@ -164,7 +164,7 @@
         {{-- tabel rencana kebutuhan obat --}}
         <div class="col-12">
           @if ($datacount != 0)
-            <table class="table table-dark table-responsive" style="overflow-x: auto; font-size: 13px;">
+            <table class="table table-dark table-responsive" style="overflow-x: auto; font-size: 13px; max-height: 360px">
               <tr>
                 <th>Nama</th>
                 <th>Satuan</th>
@@ -181,7 +181,7 @@
                     <td>{{ $rko->price }}</td>
                     <td>{{ $rko->stock }}</td>
                     <td>{{ $rko->use_avg }}</td>
-                  <td>{{ $rko->pivot->periode1 }} - {{ $rko->pivot->periode2 }}</td>
+                  <td>{{ $rko->periode1 }} - {{ $rko->periode2 }}</td>
                     <td>
                       <a href="/rko/{{ $rko->id }}/edit" class="btn btn-primary btn-sm">Edit</a>
                     </td>
