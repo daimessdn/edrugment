@@ -142,14 +142,16 @@
     <div class="card-body">
       <div class="row">
         
-        @if (session('sukses'))
-          <div class="alert alert-success mt-2">
-              {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button> --}}
-            {{ session('sukses') }}
-          </div>
-        @endif
+        <div class="col-md-12">
+          @if (session('sukses'))
+            <div class="alert alert-success mt-2">
+                {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button> --}}
+              {{ session('sukses') }}
+            </div>
+          @endif
+        </div>
     
         <!-- Button trigger modal -->
         <div class="col-12 mb-1">
