@@ -37,7 +37,7 @@ class HospitalController extends Controller
         $data_rko = Rs::find($id)->user[0]->rko;
 
         DB::update('update rko_user set submitted = 2 where user_id = ? and submitted = 1 and approved = 0', [$userid]);
-        DB::update('update rko_user set approved = 1 where user_id = ? and submitted = 1 and approved = 0', [$userid]);
+        DB::update('update rko_user set approved = 1 where user_id = ? and submitted = 2 and approved = 1', [$userid]);
 
         return back()->with('rs', $rs)->with('data_rko', $data_rko)->with('sukses', 'Permintaan RKO berhasil diproses.');
     }
@@ -49,7 +49,7 @@ class HospitalController extends Controller
         $data_rko = Rs::find($id)->user[0]->rko;
 
         DB::update('update rko_user set submitted = 2 where user_id = ? and submitted = 1 and approved = 0', [$userid]);
-        DB::update('update rko_user set approved = 2 where user_id = ? and submitted = 1 and approved = 2', [$userid]);
+        DB::update('update rko_user set approved = 2 where user_id = ? and submitted = 2 and approved = 2', [$userid]);
 
         return back()->with('rs', $rs)->with('data_rko', $data_rko)->with('sukses', 'Permintaan RKO berhasil diproses.');
     }
