@@ -95,7 +95,10 @@
           <form action="/rko/import" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-              <label for="file">Masukkan file yang akan diunggah</label>
+              <label for="file">
+                Masukkan file yang akan diunggah:<br />
+                <strong>Perlu diingat</strong> bahwa format file berupa file .xlsx.
+              </label>
               <input type="file" name="file" class="form-control form-control-sm" id="file" placeholder="Masukkan file..." required>
             </div>
             
@@ -160,7 +163,7 @@
         {{-- tabel rencana kebutuhan obat --}}
         <div class="col-12">
           @if ($datacount != 0)
-            <table class="table table-dark table-responsive" style="overflow-x: auto;">
+            <table class="table table-dark table-responsive" style="overflow-x: auto; font-size: 13px;">
               <tr>
                 <th>Nama</th>
                 <th>Satuan</th>
@@ -180,6 +183,8 @@
                   <td>{{ $rko->pivot->periode1 }} - {{ $rko->pivot->periode2 }}</td>
                     <td>
                       <a href="/rko/{{ $rko->id }}/edit" class="btn btn-primary btn-sm">Edit</a>
+                    </td>
+                    <td>
                       <a href="/rko/{{ $rko->id }}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau dihapus?');">Hapus</a>
                     </td>
                   </tr>

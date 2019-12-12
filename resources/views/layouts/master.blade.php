@@ -67,7 +67,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>@yield('title')</title>
+    <title>SIMBAT - @yield('title')</title>
 
     <!-- Fontfaces CSS-->
     <link href="{{asset('admin/css/font-face.css')}}" rel="stylesheet" media="all">

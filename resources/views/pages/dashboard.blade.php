@@ -5,5 +5,9 @@
 @endsection
 
 @section('content')
-  dashboard
+  @if (session('sukses'))
+    <div class="alert alert-success mt-2">
+      {{ session('sukses') }}
+    </div>
+  @endif
 @endsection

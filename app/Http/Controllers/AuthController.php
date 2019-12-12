@@ -17,7 +17,7 @@ class AuthController extends Controller
     {
         // dd($request->all());
         if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect('/dashboard');
+            return redirect('/dashboard')->with('sukses', 'Selamat datang di Sistem Manajemen Obat (SIMBAT), '.Auth::user()->name.'.');
         }
         
         return redirect('signin')->with('error', 'Kombinasi email dan/atau kata sandi tidak tepat. Silahkan masukkan email dan kata sandi dengan benar.');
