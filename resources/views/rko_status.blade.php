@@ -30,7 +30,7 @@
                   </tr>
     
                   @foreach ($data_rko as $rko)
-                    @if ($rko->pivot->submitted == 2 and $rko->pivot->approved == 1)
+                    @if ($rko->pivot->submitted == 1 and $rko->pivot->approved == 0)
                       <tr>
                         <td>{{ $rko->med_name }}</td>
                         <td>{{ $rko->unit }}</td>

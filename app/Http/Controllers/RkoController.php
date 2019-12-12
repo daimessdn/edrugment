@@ -30,8 +30,8 @@ class RkoController extends Controller
         $data_rko = Auth::user()->rko;
 
         $countsubmitted = count(DB::select('select * from rko_user where user_id = ? and submitted <> 0 and approved = 0', [Auth::id()]));
-        $countapproved = count(DB::select('select * from rko_user where user_id = ? and approved = 1', [Auth::id()]));
-        $countdeclined = count(DB::select('select * from rko_user where user_id = ? and approved = 2', [Auth::id()]));
+        $countapproved = count(DB::select('select * from rko_user where user_id = ? and submitted = 2 and approved = 1', [Auth::id()]));
+        $countdeclined = count(DB::select('select * from rko_user where user_id = ? and submitted = 2 and approved = 2', [Auth::id()]));
 
         return view('rko_status')->with('data_rko', $data_rko)->with('datacount', [$countsubmitted, $countapproved, $countdeclined]);
     }
