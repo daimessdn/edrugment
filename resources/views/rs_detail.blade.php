@@ -70,7 +70,7 @@
           <div class="card-body">
             {{-- {{ $datacount }} --}}
             @if ($datacount != 0)
-              <table class="table table-dark table-responsive" style="overflow-x: auto;">
+              <table class="table table-dark table-responsive" style="overflow-x: auto; font-size: 13px;">
                 <tr>
                   <th>Nama</th>
                   <th>Satuan</th>

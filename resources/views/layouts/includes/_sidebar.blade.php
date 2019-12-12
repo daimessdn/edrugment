@@ -22,6 +22,15 @@
                   </a>
                </li>
             @endif
+
+            @if (auth()->user()->roleid == 1)
+               <li>
+                  <a href="/rko/status">
+                     <i class="fas fa-medkit"></i>
+                     Status RKO
+                  </a>
+               </li>
+            @endif
             
             @if (auth()->user()->roleid == 0)
                <li>

@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // laman RKO (untuk apoteker)
     Route::get('/rko', 'RkoController@index');
+    Route::get('/rko/status', 'RkoController@status');
     Route::post('/rko/create', 'RkoController@create');
     Route::get('/rko/{id}/edit', 'RkoController@edit');
     Route::post('/rko/{id}/update', 'RkoController@update');

@@ -24,6 +24,16 @@ class RkoController extends Controller
         return view('rko')->with('data_rko', $data_rko)->with('datacount', $datacount);
     }
 
+    // status RKO
+    public function status()
+    {
+        $data_rko = Auth::user()->rko;
+
+        $datacount = count(DB::select('select * from rko_user where user_id = ? and submitted <> 0', [Auth::id()]));
+
+        return view('rko_status')->with('data_rko', $data_rko)->with('datacount', $datacount);
+    }
+
     // submit data RKO
     public function create(Request $request)
     {
