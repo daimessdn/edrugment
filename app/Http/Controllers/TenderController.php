@@ -26,4 +26,16 @@ class TenderController extends Controller
 
         return view('tender_detail')->with('rs', $rs)->with('data_rko', $data_rko);
     }
+
+    public function book($rsid, $rkoid)
+    {
+        $rs = Rs::find($rsid);
+        $rko = Rko::find($rkoid);
+        $user = Auth::id();
+
+        DB::insert('insert into tender (rko_id, rs_id, user_id) value (?, ?, ?)', [$rko->id, $rs->id, $user]);
+        DB::update('update rko_user set produced = 1 where rko_id = ? and submitted = 2', [$rko->id]);
+
+        return back()->with('sukses', 'Pesanan '.$rko->med_name.' oleh '.$rs->nama_rs.' berhasil diambil pesanannya. Silahkan cek di laman "Pengolahan Obat".');
+    }
 }

@@ -49,7 +49,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // laman tender produksi (untuk tender produksi)
     Route::get('/produksi', 'TenderController@index');
-    Route::get('/produksi/{id}', 'TenderController@detail');
+    Route::get('/produksi/{rsid}/{rkoid}/book', 'TenderController@book');
 
     // laman profil
     Route::get('/profil', 'ProfileController@index')->name('profile');
@@ -58,7 +58,5 @@ Route::group(['middleware' => ['auth']], function() {
     // laman khusus admin
     Route::get('users', 'OtherController@index');
     Route::post('users/create', 'OtherController@registerNewUser');
-
-    // route lainnya
-    Route::get('/users/all', 'OtherController@getAllUsers');
+    Route::get('/users/export', 'OtherController@getAllUsers');
 });

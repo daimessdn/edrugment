@@ -45,7 +45,16 @@
                <li>
                   <a href="/produksi">
                      <i class="fas fa-truck"></i>
-                     Produksi Obat
+                     Ambil Pesanan Produksi
+                  </a>
+               </li>
+            @endif
+
+            @if (auth()->user()->roleid == 2)
+               <li>
+                  <a href="#">
+                     <i class="fas fa-truck"></i>
+                     Pengolahan Obat
                   </a>
                </li>
             @endif
