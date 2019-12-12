@@ -86,7 +86,7 @@ class RkoController extends Controller
     // submit data RKO
     public function submit()
     {
-        DB::update('update rko_user set submitted = 1 where user_id = ?', [4]);
+        DB::update('update rko_user set submitted = 1 where user_id = ? and submitted = 0', [Auth::user()->id]);
         
         return redirect('\rko')->with('sukses', 'Data RKO berhasil disubmit. Permintaan RKO Anda akan diproses oleh administrator untuk diverifikasi.');
     }
