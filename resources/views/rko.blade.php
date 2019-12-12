@@ -138,18 +138,19 @@
   <div class="card">
     <div class="card-header">
       <h1>Rencana Kebutuhan Obat (RKO)</h1>
-      @if (session('sukses'))
-        <div class="alert alert-success mt-2">
-            {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button> --}}
-          {{ session('sukses') }}
-        </div>
-      @endif
     </div>
     <div class="card-body">
       <div class="row">
-      
+        
+        @if (session('sukses'))
+          <div class="alert alert-success mt-2">
+              {{-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button> --}}
+            {{ session('sukses') }}
+          </div>
+        @endif
+    
         <!-- Button trigger modal -->
         <div class="col-12 mb-1">
           <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#rkoAddModal">
