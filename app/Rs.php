@@ -15,4 +15,9 @@ class Rs extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function rko()
+    {
+        return $this->belongsToMany(\App\Rko::class);
+    }
 }

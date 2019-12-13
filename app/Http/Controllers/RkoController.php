@@ -43,6 +43,8 @@ class RkoController extends Controller
         // return $request->all();
         // Rko::create($request->all());
 
+        $rs_id = Auth::user()->rs[0]->id;
+
         $rko = new RKO;
 
         $rko->med_name = $request->med_name;
@@ -55,6 +57,7 @@ class RkoController extends Controller
 
         $rko->save();
 
+        DB::insert('insert into rko_rs (rs_id, rko_id) values (?, ?)', [$rs_id, $rko->id]);
         DB::insert('insert into rko_user (user_id, rko_id) values (?, ?)', [Auth::user()->id, $rko->id]);
         return redirect('\rko')->with('sukses', 'Data obat berhasil ditambahkan');
     }

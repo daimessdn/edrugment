@@ -34,7 +34,7 @@ class HospitalController extends Controller
     {
         $rs = Rs::find($id);
         $userid = Rs::find($id)->user[0]->id;
-        $data_rko = Rs::find($id)->user[0]->rko;
+        $data_rko = Rs::find($id)->rko;
 
         DB::update('update rko_user set submitted = 2 where user_id = ? and submitted = 1 and approved = 0', [$userid]);
         DB::update('update rko_user set approved = 1 where user_id = ? and submitted = 2 and approved = 0', [$userid]);

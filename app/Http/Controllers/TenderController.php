@@ -42,8 +42,8 @@ class TenderController extends Controller
 
     public function manage()
     {
-        $tender = DB::select('select * from tender where user_id = ?', [Auth::id()]);
+        $rs = Rs::all();
 
-        return view('pengolahan')->with('item', $tender);
+        return view('pengolahan')->with('rs', $rs);
     }
 }
