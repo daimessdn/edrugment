@@ -21,23 +21,16 @@
                 <table class="table table-dark table-responsive mb-4 mt-2" style="overflow-x: auto; font-size: 13px; max-height: 400px;">
                   <tr>
                     <th>Nama</th>
-                    <th>Satuan</th>
-                    <th>Harga Satuan</th>
-                    <th>Stock</th>
-                    <th>Rata-Rata Pemakaian</th>
-                    <th>Periode</th>
                     <th>Status</th>
                   </tr>
     
                   @foreach ($data_rko as $rko)
                     @if ($rko->pivot->submitted == 1 and $rko->pivot->approved == 0)
-                      <tr>
-                        <td>{{ $rko->med_name }}</td>
-                        <td>{{ $rko->unit }}</td>
-                        <td>{{ $rko->price }}</td>
-                        <td>{{ $rko->stock }}</td>
-                        <td>{{ $rko->use_avg }}</td>
-                        <td>{{ $rko->periode1 }} - {{ $rko->periode2 }}</td>
+                    <tr>
+                        <td>
+                          {{ $rko->med_name }} <br/>
+                          <span class="badge badge-primary">{{ $rko->periode1 }} - <br/>{{ $rko->periode2 }}</span>
+                        </td>
                         <td>
                           @if ( $rko->pivot->approved == 0 )
                             Belum diverifikasi
@@ -69,23 +62,16 @@
                 <table class="table table-dark table-responsive mb-4 mt-2" style="overflow-x: auto; font-size: 13px; max-height: 400px;">
                   <tr>
                     <th>Nama</th>
-                    <th>Satuan</th>
-                    <th>Harga Satuan</th>
-                    <th>Stock</th>
-                    <th>Rata-Rata Pemakaian</th>
-                    <th>Periode</th>
                     <th>Status</th>
                   </tr>
     
                   @foreach ($data_rko as $rko)
                     @if ($rko->pivot->submitted == 2 and $rko->pivot->approved == 1)
                       <tr>
-                        <td>{{ $rko->med_name }}</td>
-                        <td>{{ $rko->unit }}</td>
-                        <td>{{ $rko->price }}</td>
-                        <td>{{ $rko->stock }}</td>
-                        <td>{{ $rko->use_avg }}</td>
-                        <td>{{ $rko->periode1 }} - {{ $rko->periode2 }}</td>
+                        <td>
+                          {{ $rko->med_name }} <br/>
+                          <span class="badge badge-primary">{{ $rko->periode1 }} - <br/>{{ $rko->periode2 }}</span>
+                        </td>
                         <td>
                           @if ( $rko->pivot->approved == 0 )
                             Belum diverifikasi
@@ -119,23 +105,16 @@
                 <table class="table table-dark table-responsive mb-4 mt-2" style="overflow-x: auto; font-size: 13px; max-height: 400px;">
                   <tr>
                     <th>Nama</th>
-                    <th>Satuan</th>
-                    <th>Harga Satuan</th>
-                    <th>Stock</th>
-                    <th>Rata-Rata Pemakaian</th>
-                    <th>Periode</th>
                     <th>Status</th>
                   </tr>
     
                   @foreach ($data_rko as $rko)
                     @if ($rko->pivot->submitted == 2 and $rko->pivot->approved == 2)
-                      <tr>
-                        <td>{{ $rko->med_name }}</td>
-                        <td>{{ $rko->unit }}</td>
-                        <td>{{ $rko->price }}</td>
-                        <td>{{ $rko->stock }}</td>
-                        <td>{{ $rko->use_avg }}</td>
-                        <td>{{ $rko->periode1 }} - {{ $rko->periode2 }}</td>
+                    <tr>
+                        <td>
+                          {{ $rko->med_name }} <br/>
+                          <span class="badge badge-primary">{{ $rko->periode1 }} - <br/>{{ $rko->periode2 }}</span>
+                        </td>
                         <td>
                           @if ( $rko->pivot->approved == 0 )
                             Belum diverifikasi
