@@ -34,8 +34,16 @@ class TenderController extends Controller
         $user = Auth::id();
 
         DB::insert('insert into tender (rko_id, rs_id, user_id) value (?, ?, ?)', [$rko->id, $rs->id, $user]);
+        DB::insert('insert into rko_tender (rko_id, tender_id) value (?, ?)', [$rko->id, $user]);
         DB::update('update rko_user set produced = 1 where rko_id = ? and submitted = 2', [$rko->id]);
 
         return back()->with('sukses', 'Pesanan '.$rko->med_name.' oleh '.$rs->nama_rs.' berhasil diambil pesanannya. Silahkan cek di laman "Pengolahan Obat".');
+    }
+
+    public function manage()
+    {
+        $tender = DB::select('select * from tender where user_id = ?', [Auth::id()]);
+
+        return view('pengolahan')->with('item', $tender);
     }
 }

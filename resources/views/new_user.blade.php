@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-  Redistrasi User
+  Registrasi User
 @endsection
 
 @section('content')
@@ -96,6 +96,7 @@
                   </tr>
                 @endforeach
               </table>
+              <a href="/users/export" class="btn btn-primary btn-sm mt-2">Unduh data user</a>
             @else
               Belum ada user lain yang didaftarkan.
             @endif

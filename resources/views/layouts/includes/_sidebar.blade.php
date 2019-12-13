@@ -52,7 +52,7 @@
 
             @if (auth()->user()->roleid == 2)
                <li>
-                  <a href="#">
+                  <a href="/manage">
                      <i class="fas fa-truck"></i>
                      Pengolahan Obat
                   </a>

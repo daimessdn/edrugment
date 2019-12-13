@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth']], function() {
     // laman tender produksi (untuk tender produksi)
     Route::get('/produksi', 'TenderController@index');
     Route::get('/produksi/{rsid}/{rkoid}/book', 'TenderController@book');
+    Route::get('/manage', 'TenderController@manage');
 
     // laman profil
     Route::get('/profil', 'ProfileController@index')->name('profile');
