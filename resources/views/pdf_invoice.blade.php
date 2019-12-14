@@ -13,7 +13,7 @@
             <h1>{{ $invoice->rs->nama_rs }}</h1>
           </div>
           <div class="card-body">
-            <table border="1" style="overflow-x: auto; font-size: 13px; max-height: 360px;">
+            <table border="1" style="overflow-x: auto; font-size: 13px;">
               <tr>
                 <th>Nama</th>
                 <th>Satuan</th>
