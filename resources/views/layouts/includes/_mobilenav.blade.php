@@ -20,10 +20,10 @@
                 </ul>
             </li> --}}
             <li>
-                <a href="/dashboard">
-                    <i class="fas fa-tachometer-alt"></i>
-                    Dasbor
-                </a>
+               <a href="/dashboard">
+                  <i class="fas fa-tachometer-alt"></i>
+                  Dasbor
+               </a>
             </li>
 
             @if (auth()->user()->roleid == 1)
@@ -31,6 +31,15 @@
                   <a href="/rko">
                      <i class="fas fa-medkit"></i>
                      Rencana Kebutuhan Obat (RKO)
+                  </a>
+               </li>
+            @endif
+
+            @if (auth()->user()->roleid == 1)
+               <li>
+                  <a href="/rko/history">
+                     <i class="fas fa-clock-o"></i>
+                     Riwayat Rencana
                   </a>
                </li>
             @endif
@@ -53,6 +62,15 @@
                </li>
             @endif
 
+            @if (auth()->user()->roleid == 0)
+               <li>
+                  <a href="/process">
+                     <i class="fas fa-check"></i>
+                     Proses RKO
+                  </a>
+               </li>
+            @endif
+
             @if (auth()->user()->roleid == 2)
                <li>
                   <a href="/produksi">
@@ -64,7 +82,7 @@
 
             @if (auth()->user()->roleid == 2)
                <li>
-                  <a href="#">
+                  <a href="/manage">
                      <i class="fas fa-truck"></i>
                      Pengolahan Obat
                   </a>
