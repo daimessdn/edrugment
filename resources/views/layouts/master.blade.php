@@ -185,8 +185,32 @@
             @csrf
             <div class="form-group">
               <label for="file">
-                Masukkan file yang akan diunggah:<br />
-                <strong>Perlu diingat</strong> bahwa format file berupa file .xlsx.
+                <p>
+                  Masukkan file yang akan diunggah:<br />
+                  <strong>Perlu diingat</strong>:<br />
+                  <ul style="margin-left: 15px;">
+                    <li>
+                      Bahwa format file harus berupa file .xlsx.
+                    </li>
+                    <li>
+                      Isi file mencakup:<br />
+                      <ul style="margin-left: 15px;">
+                        <li>Nama obat (baris A)</li>
+                        <li>Satuan (baris B)</li>
+                        <li>Harga satuan (baris C)</li>
+                        <li>Stok sisa obat (baris D)</li>
+                        <li>Penggunaan rata-rata per bulan (baris E)</li>
+                        <li>Periode:
+                          <ul style="margin-left: 15px;">
+                            <li>Tanggal mulai periode (baris F) [YYYY-MM-DD]</li>
+                            <li>Tanggal akhir periode (baris G) [YYYY-MM-DD]</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </p>
+                <p>Format pengisian dapat diunduh pada <a href="{{ asset('files/format.xlsx') }}">link berikut ini.</a></p>
               </label>
               <input type="file" name="file" class="form-control form-control-sm" id="file" placeholder="Masukkan file..." required>
             </div>
