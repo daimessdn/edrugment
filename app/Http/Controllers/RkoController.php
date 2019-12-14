@@ -132,10 +132,21 @@ class RkoController extends Controller
         
         DB::update('update rko set submitted = 1 where rs_id = ? and submitted = 0', [Auth::user()->rs->id]);
 
+        DB::insert('insert into messages (content, role_id, rs_id) values (?, ?, ?)', [
+            Auth::user()->name.' mengumpulkan data RKO dengan nomor invoice #'.$invoice->id.' dan rumah sakit '.Auth::user()->rs->nama_rs.'.',
+            Auth::user()->roleid,
+            Auth::user()->rs->id
+        ]);
+        
+        DB::insert('insert into messages (content, role_id, rs_id) values (?, ?, ?)', [
+            'Ada RKO baru yang harus diproses dengan nomor invoice #'.$invoice->id.' dan rumah sakit '.Auth::user()->rs->nama_rs.'.',
+            0, 0,
+        ]);
+
         return redirect('\rko')->with(
             'sukses',
             'Data RKO berhasil disubmit. Permintaan RKO Anda akan diproses oleh administrator untuk diverifikasi.
-             Silahkan menuju laman "Status RKO" untuk melihat status RKO dan "Riwayat Rencana" untuk melihat invoice RKO yang telah dibuat.');
+             Silahkan menuju laman "Status RKO" untuk melihat status RKO dan "Invoice RKO" untuk melihat invoice RKO yang telah dibuat.');
     }
 
     // EXPORT IMPORT data RKO

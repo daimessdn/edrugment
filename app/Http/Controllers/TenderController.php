@@ -26,12 +26,16 @@ class TenderController extends Controller
     public function book($id)
     {
         $inv = Invoice::find($id);
-        $rko = $inv->rko;
         $user = Auth::id();
 
         DB::update('update rko set produced = 1 where invoice_id = ?', [$inv->id]);
         DB::update('update invoice set tender_id = ? where id = ?', [Auth::id(), $inv->id]);
         DB::update('update invoice set stage = 3 where id = ?', [$inv->id]);
+
+        DB::insert('insert into messages (content, role_id, rs_id) values (?, ?, ?)', [
+            'RKO dengan nomor invoice #'.$inv->id.' dan rumah sakit '.$inv->rs->nama_rs.' telah diambil pesanannya oleh '.Auth::user()->name.'.',
+            1, $inv->rs->id 
+        ]);
 
         return back()->with('sukses', 'Pesanan dengan nomor invoice '.$inv->id.' oleh '.$inv->rs->nama_rs.' berhasil diambil pesanannya. Silahkan cek di laman "Pengolahan Obat".');
     }
@@ -68,6 +72,11 @@ class TenderController extends Controller
         DB::update('update invoice set started_at = ? where id = ?', [$date ,$inv->id]);
         DB::update('update invoice set finished_at = date_add(?, interval ? day) where id = ?', [$date, $request->estimated, $inv->id]);
 
+        DB::insert('insert into messages (content, role_id, rs_id) values (?, ?, ?)', [
+            'RKO dengan nomor invoice #'.$inv->id.' dan rumah sakit '.$inv->rs->nama_rs.' sedang mulai dalam proses produksi dan diperkirakan selesai dalam waktu '.$request->estimated.' hari (sejak '.$inv->started_at.' - '.$inv->finished_at.'.',
+            1, $inv->rs->id 
+        ]);
+        
         return redirect('/manage')->with('sukses', 'Produksi sudah dimulai untuk invoice #'.$inv->id.' ['.$inv->rs->nama_rs.'] berhasil diset jumlah produksi.');
     }
 }

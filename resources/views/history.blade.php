@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-  Riwayat Rencana
+ Invoice RKO
 @endsection
 
 @section('content')
@@ -16,34 +16,33 @@
       @endif
     
     <div class="col-md-6">
-        <div class="card">
-          <div class="card-header">
-            <h3>Riwayat Rencana</h3>
-          </div>
-            
-          <div class="card-body">
-            <table class="table table-dark">
+      <div class="card">
+        <div class="card-header">
+          <h3>Invoice RKO</h3>
+        </div>
+          
+        <div class="card-body">
+          <table class="table table-dark">
+            <tr>
+              <th>INVOICE #</th>
+              <th>Tanggal Dibuat</th>
+              <th></th>
+            </tr>
+            @foreach ($invoices as $inv)
               <tr>
-                <th>INVOICE #</th>
-                <th>Tanggal Dibuat</th>
-                <th></th>
+                <td>{{ $inv->id }}</td>
+                <td>{{ $inv->created_at }}</td>
+                <td>
+                  <a href="{{ asset('QR/'.$inv->id.'.png') }}" class="btn btn-primary btn-sm">
+                    LIHAT
+                  </a>
+                  <a href="history/{{ $inv->id }}/downloadPDF" class="btn btn-success btn-sm" target="_blank">
+                    UNDUH PDF
+                  </a>
+                </td>
               </tr>
-              @foreach ($invoices as $inv)
-                <tr>
-                  <td>{{ $inv->id }}</td>
-                  <td>{{ $inv->created_at }}</td>
-                  <td>
-                    <a href="{{ asset('QR/'.$inv->id.'.png') }}" class="btn btn-primary btn-sm">
-                      LIHAT
-                    </a>
-                    <a href="history/{{ $inv->id }}/downloadPDF" class="btn btn-success btn-sm" target="_blank">
-                      UNDUH PDF
-                    </a>
-                  </td>
-                </tr>
-              @endforeach
-            </table>
-          </div>
+            @endforeach
+          </table>
         </div>
       </div>
     </div>

@@ -27,6 +27,7 @@ Route::get('/signout', "AuthController@signout");
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/dashboard/{id}/dismiss', 'DashboardController@dismiss');
 
     // laman RKO (untuk apoteker)
     Route::get('/rko', 'RkoController@index');

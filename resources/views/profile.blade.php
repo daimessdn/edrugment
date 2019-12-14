@@ -56,7 +56,7 @@
 									@endif
 								</p>
 								<p>
-									<a href="/signout" class="btn btn-primary btn-sm">Logout</a>
+									<a href="/signout" class="btn btn-primary btn-sm mt-2">Logout</a>
 								</p>
 							</div>
 						</div>

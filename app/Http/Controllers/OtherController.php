@@ -35,7 +35,17 @@ class OtherController extends Controller
         DB::update('update rko set submitted = 2 where invoice_id = ?', [$inv->id]);
         DB::update('update rko set approved = 1 where invoice_id = ?', [$inv->id]);
         DB::update('update invoice set stage = 2 where id = ?', [$inv->id]);
-        
+
+        DB::insert('insert into messages (content, role_id, rs_id) values (?, ?, ?)', [
+            'RKO dengan nomor invoice #'.$inv->id.' dan rumah sakit '.$inv->rs->nama_rs.' diterima.',
+            1, $inv->rs->id 
+        ]);
+
+        DB::insert('insert into messages (content, role_id, rs_id) values (?, ?, ?)', [
+            'Ada pesanan RKO masuk dengan nomor invoice #'.$inv->id.' dan rumah sakit '.$inv->rs->nama_rs.'. Silahkan klik "Ambil Pesanan" di laman "Ambil Pesanan Produksi" untuk mengambil pesanan.',
+            2, 0 
+        ]);
+
         return back()->with('inv', $inv)->with('sukses', 'Permintaan RKO berhasil diproses.');
     }
 
@@ -47,6 +57,11 @@ class OtherController extends Controller
         DB::update('update rko set approved = 2 where invoice_id = ?', [$inv->id]);
         DB::update('update invoice set stage = 2 where id = ?', [$inv->id]);
         
+        DB::insert('insert into messages (content, role_id, rs_id) values (?, ?, ?)', [
+            'RKO dengan nomor invoice #'.$invoice->id.' dan rumah sakit '.Auth::user()->rs->nama_rs.' ditolak.',
+            1, $inv->rs->id 
+        ]);
+
         return back()->with('inv', $inv)->with('sukses', 'Permintaan RKO berhasil diproses.');
     }
 

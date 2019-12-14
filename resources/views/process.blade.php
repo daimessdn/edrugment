@@ -47,14 +47,12 @@
                   @endforeach
                 </table>
 
-                <a href="/process/{{ $inv->id }}/approve" class="btn btn-primary btn-sm mt-2">Terima RKO</a>
-                <a href="/process/{{ $inv->id }}/decline" class="btn btn-danger btn-sm mt-2">Tolak RKO</a>
+                <a href="/process/{{ $inv->id }}/approve" class="btn btn-primary btn-sm mt-2 mb-3">Terima RKO</a>
+                <a href="/process/{{ $inv->id }}/decline" class="btn btn-danger btn-sm mt-2 mb-3">Tolak RKO</a>
               @endforeach
             @else
               <p>Belum ada rumah sakit yang mengumpulkan data RKO.</p>
-            @endif
-
-            
+            @endif            
           </div>
         </div>
       </div>
