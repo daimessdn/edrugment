@@ -27,7 +27,7 @@
                <li>
                   <a href="/rko/history">
                      <i class="fas fa-clock-o"></i>
-                     Riwayat Rencana
+                     Invoice RKO
                   </a>
                </li>
             @endif

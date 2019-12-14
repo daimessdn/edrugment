@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $messages = Messages::all()->where('role_id', '=', $user->roleid)->where('rs_id', '=', $user->rs_id)->where('dismissed', '=', 0);
         $count = count($messages);
 
-        return view('pages.dashboard', ['messages' => $messages, 'count' => $count]);
+        return view('pages.dashboard', ['messages' => $messages, 'count' => $count, 'user' => $user]);
     }
 
     public function dismiss($id)
