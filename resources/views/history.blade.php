@@ -33,7 +33,9 @@
                   <td>{{ $inv->id }}</td>
                   <td>{{ $inv->created_at }}</td>
                   <td>
-                    <img src="{{ asset('QR/'.$inv->id.'.png') }}"
+                    <a href="{{ asset('QR/'.$inv->id.'.png') }}" class="btn btn-primary btn-sm">
+                      LIHAT
+                    </a>
                   </td>
                 </tr>
               @endforeach

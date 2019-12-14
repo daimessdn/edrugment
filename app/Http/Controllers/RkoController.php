@@ -116,7 +116,7 @@ class RkoController extends Controller
 
         DB::update('update rko set invoice_id = ? where rs_id = ? and submitted = 0 and invoice_id = 0', [$invoice->id, Auth::user()->rs->id]);
         
-        \QrCode::size(500)->format('png')->generate(json_encode(Auth::user()->rs->rko->where('submitted', '=', 0)), public_path('QR/'.$invoice->id.'.png'));
+        \QrCode::size(1000)->format('png')->generate(json_encode(Auth::user()->rs->rko->where('submitted', '=', 0)), public_path('QR/'.$invoice->id.'.png'));
         
         DB::update('update rko set submitted = 1 where rs_id = ? and submitted = 0', [Auth::user()->rs->id]);
 
