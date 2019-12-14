@@ -53,6 +53,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/produksi', 'TenderController@index');
     Route::get('/produksi/{id}/book', 'TenderController@book');
     Route::get('/manage', 'TenderController@manage');
+    Route::post('/manage/{inv_id}/{rko_id}/addQuantity', 'TenderController@addQuantity');
+    Route::post('/manage/{inv_id}/produce', 'TenderController@produce');
 
     // laman profil
     Route::get('/profil', 'ProfileController@index')->name('profile');

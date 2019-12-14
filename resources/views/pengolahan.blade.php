@@ -22,36 +22,55 @@
 
         {{-- tabel rencana kebutuhan obat --}}
         <div class="col-12">
-          @foreach ($rs as $rsi)
-            <h4 class="mt-2 mb-2">{{ $rsi->nama_rs }}</h4>
-            <table class="table table-dark table-responsive mb-2" style="overflow-x: auto; font-size: 13px; max-height: 360px">
-              <tr>
-                <th>Nama</th>
-                <th>Satuan</th>
-                <th>Harga Satuan</th>
-                <th>Stok sisa obat</th>
-                <th>Rata-Rata Pemakaian (per bulan)</th>
-                <th>Periode</th>
-              </tr>
+          @if ($count != 0)
+            @foreach ($invoices as $inv)
+              <h4 class="mt-2 mb-2">
+                <span class="badge badge-warning">INVOICE #{{ $inv->id }}</span> : 
+                {{ $inv->rs->nama_rs }}
+              </h4>
+              <table class="table table-dark table-responsive mb-2" style="overflow-x: auto; font-size: 13px; max-height: 360px">
+                <tr>
+                  <th>Nama</th>
+                  <th>Periode</th>
+                  <th>Jumlah produksi</th>
+                  <th>Isikan jumlah produksi</th>
+                </tr>
 
-              @foreach ($rsi->user[0]->rko as $rko)
-                @if($rko->pivot->submitted == 2 and $rko->pivot->approved == 1 and $rko->pivot->produced == 1)
+                @foreach ($inv->rko as $rko)
                   <tr>
                     <td>{{ $rko->med_name }}</td>
-                    <td>{{ $rko->unit }}</td>
-                    <td>{{ $rko->price }}</td>
-                    <td>{{ $rko->stock }}</td>
-                    <td>{{ $rko->use_avg }}</td>
                     <td>{{ $rko->periode1 }} - {{ $rko->periode2 }}</td>
-                    <td>
-                      <a href="/produksi/{{ $rsi->id }}/{{ $rko->id }}/book" class="btn btn-primary btn-sm">Ambil pesanan</a>
-                    </td>
+                    <td>{{ $rko->quantity }}</td>
+                    <form action="/manage/{{ $inv->id }}/{{ $rko->id }}/addQuantity" method="POST">
+                      @csrf
+                      <td>
+                        <input class="form-control form-control-sm" type="number" name="quantity" required />
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-primary" type="submit">Set jumlah</button>
+                      </td>
+                    </form>
                   </tr>
-                @endif
-              @endforeach
-              
-            </table>
-          @endforeach
+                @endforeach
+              </table>
+
+              <form action="/manage/{{ $inv->id }}/produce" method="POST">
+                @csrf
+                <label class="my-1 mr-2" for="estimated">Estimasi waktu produksi (dalam hari): </label>
+                <div class="input-group mb-2 mr-sm-2">
+                  <div class="input-group-prepend">
+                    <div class="input-group-text">
+                      <i class="fas fa-calendar"></i>
+                    </div>
+                  </div>
+                  <input type="number" class="form-control" id="estimated" name="estimated">
+                </div>
+                <button class="btn btn-sm btn-primary" type="submit">Mulai produksi</button>
+              </form>
+            @endforeach
+          @else
+            <p>Anda belum mengambil pesanan. Silahkan pilih pesanan di laman "Ambil Pesanan Produksi"</p>
+          @endif
         </div>
       </div>
     </div>

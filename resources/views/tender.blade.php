@@ -41,20 +41,20 @@
                   </tr>
 
                   @foreach ($inv->rko as $rko)
-                    @if($rko->produced == 0)
-                      <tr>
-                        <td>{{ $rko->med_name }}</td>
-                        <td>{{ $rko->unit }}</td>
-                        <td>{{ $rko->price }}</td>
-                        <td>{{ $rko->stock }}</td>
-                        <td>{{ $rko->use_avg }}</td>
-                        <td>{{ $rko->periode1 }} - {{ $rko->periode2 }}</td>
-                      </tr>
-                    @endif
+                    <tr>
+                      <td>{{ $rko->med_name }}</td>
+                      <td>{{ $rko->unit }}</td>
+                      <td>{{ $rko->price }}</td>
+                      <td>{{ $rko->stock }}</td>
+                      <td>{{ $rko->use_avg }}</td>
+                      <td>{{ $rko->periode1 }} - {{ $rko->periode2 }}</td>
+                    </tr>
                   @endforeach
                 </table>
               @endif
             @endforeach
+          @else
+            <p>Belum ada RKO diterima yang bisa diambil pesanannya</p>
           @endif
         </div>
       </div>
