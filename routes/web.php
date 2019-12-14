@@ -30,6 +30,8 @@ Route::group(['middleware' => ['auth']], function() {
 
     // laman RKO (untuk apoteker)
     Route::get('/rko', 'RkoController@index');
+    Route::get('/rko/history', 'RkoController@history');
+    Route::get('/rko/history/{id}/qr', 'RkoController@qr');
     Route::get('/rko/status', 'RkoController@status');
     Route::post('/rko/create', 'RkoController@create');
     Route::get('/rko/{id}/edit', 'RkoController@edit');
@@ -49,7 +51,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     // laman tender produksi (untuk tender produksi)
     Route::get('/produksi', 'TenderController@index');
-    Route::get('/produksi/{rsid}/{rkoid}/book', 'TenderController@book');
+    Route::get('/produksi/{id}/book', 'TenderController@book');
     Route::get('/manage', 'TenderController@manage');
 
     // laman profil
@@ -57,6 +59,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('profil/password/change', 'ProfileController@changePassword');
 
     // laman khusus admin
+    Route::get('/process', 'OtherController@process');
+    Route::get('/process/{id}/approve', 'OtherController@approve');
+    Route::get('/process/{id}/decline', 'OtherController@decline');
     Route::get('users', 'OtherController@index');
     Route::post('users/create', 'OtherController@registerNewUser');
     Route::get('/users/export', 'OtherController@getAllUsers');

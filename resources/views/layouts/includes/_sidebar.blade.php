@@ -25,6 +25,15 @@
 
             @if (auth()->user()->roleid == 1)
                <li>
+                  <a href="/rko/history">
+                     <i class="fas fa-clock-o"></i>
+                     Riwayat Rencana
+                  </a>
+               </li>
+            @endif
+
+            @if (auth()->user()->roleid == 1)
+               <li>
                   <a href="/rko/status">
                      <i class="fas fa-medkit"></i>
                      Status RKO
@@ -37,6 +46,15 @@
                   <a href="/rs">
                      <i class="fas fa-hospital-o"></i>
                      Daftar Rumah Sakit
+                  </a>
+               </li>
+            @endif
+
+            @if (auth()->user()->roleid == 0)
+               <li>
+                  <a href="/process">
+                     <i class="fas fa-check"></i>
+                     Proses RKO
                   </a>
                </li>
             @endif

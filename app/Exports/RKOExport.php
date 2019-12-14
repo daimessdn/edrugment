@@ -14,8 +14,6 @@ class RKOExport implements FromCollection
     */
     public function collection()
     {
-        $user = Auth::user()->rko;
-        
-        return $user;
+        return Auth::user()->rs->rko()->get();
     }
 }

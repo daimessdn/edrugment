@@ -4,29 +4,6 @@
   Detail Rumah Sakit
 @endsection
 
-<div class="modal fade" id="prosesRKO" tabindex="-1" role="dialog" aria-labelledby="prosesRKOLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 id="prosesRKOLabel">Proses data RKO</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Silahkan tekan <strong>'Terima Verifikasi'</strong> untuk menerima permintaan RKO rumah sakit yang bersangkutan, atau tekan <strong>'Tolak Verifikasi'</strong> untuk menolak data RKO rumah sakit<br /><br /></p>
-        <p>*Segala data yang telah disubmit tidak dapat diubah maupun dikembalikan. Jadi, pastikan Anda sudah memastikan bahwa data yang diisi telah benar.
-            <br />
-            <br />
-        </p> 
-        <a href="/rs/{{ $rs->id }}/detail/approve" class="btn btn-primary btn-sm">Terima Verifikasi</a>
-        <a href="/rs/{{ $rs->id }}/detail/decline" class="btn btn-danger btn-sm">Tolak Verifikasi</a>
-      </div>
-
-    </div>
-  </div>
-</div>
-
 @section('content')
 <div class="container">
   <div class="row d-flex flex-row">
@@ -72,6 +49,7 @@
             @if ($datacount != 0)
               <table class="table table-dark table-responsive" style="overflow-x: auto; font-size: 13px; max-height: 400px;">
                 <tr>
+                  <th>#INVOICE<br/>ID</th>
                   <th>Nama</th>
                   <th>Satuan</th>
                   <th>Harga Satuan</th>
@@ -81,8 +59,9 @@
                 </tr>
 
                 @foreach ($data_rko as $rko)
-                  @if ($rko->pivot->submitted == 1 and $rko->pivot->approved == 0)
+                  @if ($rko->submitted == 1 and $rko->approved == 0)
                     <tr>
+                      <td>{{ $rko->invoice_id }}</td>
                       <td>{{ $rko->med_name }}</td>
                       <td>{{ $rko->unit }}</td>
                       <td>{{ $rko->price }}</td>
@@ -94,7 +73,7 @@
                 @endforeach
               </table>
               
-              <a href="#" class="btn btn-primary btn-sm mt-2" data-toggle="modal" data-target="#prosesRKO">Proses RKO</a>
+              <a href="/process" class="btn btn-primary btn-sm mt-2">Proses RKO</a>
             @else
               Data RKO belum dikumpulkan oleh pihak rumah sakit yang bersangkutan.
             @endif

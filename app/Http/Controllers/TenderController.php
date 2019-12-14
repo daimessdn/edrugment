@@ -9,40 +9,33 @@ use Illuminate\Support\Facades\DB;
 
 use App\Rs;
 use App\Rko;
+use App\Invoice;
 
 class TenderController extends Controller
 {
     public function index()
     {
-        $rs = Rs::all();
+        $invoices = Invoice::all();
+        $count = count($invoices->where('stage', '=', '2'));
 
-        return view('tender', ['rs' => $rs]);
+        return view('tender')->with('invoices', $invoices)->with('count', $count);
     }
 
-    public function detail($id)
+    public function book($id)
     {
-        $rs = Rs::find($id);
-        $data_rko = Rs::find($id)->user[0]->rko;
-
-        return view('tender_detail')->with('rs', $rs)->with('data_rko', $data_rko);
-    }
-
-    public function book($rsid, $rkoid)
-    {
-        $rs = Rs::find($rsid);
-        $rko = Rko::find($rkoid);
+        $inv = Invoice::find($id);
+        $rko = $inv->rko;
         $user = Auth::id();
 
-        DB::insert('insert into tender (rko_id, rs_id, user_id) value (?, ?, ?)', [$rko->id, $rs->id, $user]);
-        DB::insert('insert into rko_tender (rko_id, tender_id) value (?, ?)', [$rko->id, $user]);
-        DB::update('update rko_user set produced = 1 where rko_id = ? and submitted = 2', [$rko->id]);
+        DB::update('update rko set produced = 1 where invoice_id = ?', [$inv->id]);
+        DB::update('update invoice set stage = 3 where id = ?', [$inv->id]);
 
-        return back()->with('sukses', 'Pesanan '.$rko->med_name.' oleh '.$rs->nama_rs.' berhasil diambil pesanannya. Silahkan cek di laman "Pengolahan Obat".');
+        return back()->with('sukses', 'Pesanan dengan nomor invoice '.$inv->id.' oleh '.$inv->rs->nama_rs.' berhasil diambil pesanannya. Silahkan cek di laman "Pengolahan Obat".');
     }
 
     public function manage()
     {
-        $rs = Rs::all();
+        $rs = Rko::all();
 
         return view('pengolahan')->with('rs', $rs);
     }

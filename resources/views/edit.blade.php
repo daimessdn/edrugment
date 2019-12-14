@@ -45,6 +45,17 @@
         <input type="number" name="use_avg" step="0.01" class="form-control font-control-sm" id="use_avg" value="{{ $rko->use_avg }}" required>
         <small class="form-text text-muted">Penulisan bisa ditulis dengan maksimal dua angka di belakang koma.</small>
       </div>
+
+      <div class="form-group">
+        <label>Periode</label>
+        <div class="input-group">
+          <input type="date" name="periode1" class="form-control font-control-sm">
+          <div class="input-group-prepend font-control-sm">
+            <span class="input-group-text" id="basic-addon1">-</span>
+          </div>
+          <input type="date" name="periode2" class="form-control font-control-sm" >
+        </div>
+      </div>
       
       <button type="submit" class="btn btn-primary btn-sm">Submit</button>
     </form>

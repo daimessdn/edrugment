@@ -25,20 +25,21 @@
                   </tr>
     
                   @foreach ($data_rko as $rko)
-                    @if ($rko->pivot->submitted == 1 and $rko->pivot->approved == 0)
+                    @if ($rko->submitted == 1 and $rko->approved == 0)
                     <tr>
                         <td>
-                          {{ $rko->med_name }} <br/>
-                          <span class="badge badge-primary">{{ $rko->periode1 }} - <br/>{{ $rko->periode2 }}</span>
+                            <span class="badge badge-warning">INV #{{ $rko->invoice_id }}</span>
+                            {{ $rko->med_name }} <br/>
+                            <span class="badge badge-primary">{{ $rko->periode1 }} - {{ $rko->periode2 }}</span>
                         </td>
                         <td>
-                          @if ( $rko->pivot->approved == 0 )
+                          @if ( $rko->approved == 0 )
                             Belum diverifikasi
-                          @elseif ( $rko->pivot->approved == 1 )
+                          @elseif ( $rko->approved == 1 )
                             Disetujui <br />
-                            @if ( $rko->pivot->produced == 0 )
+                            @if ( $rko->produced == 0 )
                               Belum diproduksi
-                            @elseif ( $rko->pivot->produced == 1 )
+                            @elseif ( $rko->produced == 1 )
                               Dalam proses produksi
                             @else
                               Sudah diproduksi
@@ -66,20 +67,21 @@
                   </tr>
     
                   @foreach ($data_rko as $rko)
-                    @if ($rko->pivot->submitted == 2 and $rko->pivot->approved == 1)
+                    @if ($rko->submitted == 2 and $rko->approved == 1)
                       <tr>
+                          <td>
+                              <span class="badge badge-warning">INV #{{ $rko->invoice_id }}</span>
+                              {{ $rko->med_name }} <br/>
+                              <span class="badge badge-primary">{{ $rko->periode1 }} - {{ $rko->periode2 }}</span>
+                          </td>
                         <td>
-                          {{ $rko->med_name }} <br/>
-                          <span class="badge badge-primary">{{ $rko->periode1 }} - <br/>{{ $rko->periode2 }}</span>
-                        </td>
-                        <td>
-                          @if ( $rko->pivot->approved == 0 )
+                          @if ( $rko->approved == 0 )
                             Belum diverifikasi
-                          @elseif ( $rko->pivot->approved == 1 )
+                          @elseif ( $rko->approved == 1 )
                             Disetujui <br />
-                            @if ( $rko->pivot->produced == 0 )
+                            @if ( $rko->produced == 0 )
                               Belum diproduksi
-                            @elseif ( $rko->pivot->produced == 1 )
+                            @elseif ( $rko->produced == 1 )
                               Dalam proses produksi
                             @else
                               Sudah diproduksi
@@ -109,20 +111,21 @@
                   </tr>
     
                   @foreach ($data_rko as $rko)
-                    @if ($rko->pivot->submitted == 2 and $rko->pivot->approved == 2)
+                    @if ($rko->submitted == 2 and $rko->approved == 2)
                     <tr>
                         <td>
-                          {{ $rko->med_name }} <br/>
-                          <span class="badge badge-primary">{{ $rko->periode1 }} - <br/>{{ $rko->periode2 }}</span>
+                            <span class="badge badge-warning">INV #{{ $rko->invoice_id }}</span>
+                            {{ $rko->med_name }} <br/>
+                            <span class="badge badge-primary">{{ $rko->periode1 }} - {{ $rko->periode2 }}</span>
                         </td>
                         <td>
-                          @if ( $rko->pivot->approved == 0 )
+                          @if ( $rko->approved == 0 )
                             Belum diverifikasi
-                          @elseif ( $rko->pivot->approved == 1 )
+                          @elseif ( $rko->approved == 1 )
                             Disetujui <br />
-                            @if ( $rko->pivot->produced == 0 )
+                            @if ( $rko->produced == 0 )
                               Belum diproduksi
-                            @elseif ( $rko->pivot->produced == 1 )
+                            @elseif ( $rko->produced == 1 )
                               Dalam proses produksi
                             @else
                               Sudah diproduksi

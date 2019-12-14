@@ -22,35 +22,10 @@ class HospitalController extends Controller
     public function detail($id)
     {
         $rs = Rs::find($id);
-        $userid = Rs::find($id)->user[0]->id;
-        $data_rko = Rs::find($id)->user[0]->rko;
+        $data_rko = $rs->rko()->where('submitted', '=', '1')->get();
 
-        $datacount = count(DB::select('select * from rko_user where user_id = ? and submitted = 1 and approved = 0', [$userid]));
+        $datacount = count(DB::select('select * from rko where rs_id = ? and submitted = 1 and approved = 0', [$rs->id]));
 
         return view('rs_detail')->with('rs', $rs)->with('data_rko', $data_rko)->with('datacount', $datacount);
-    }
-
-    public function approve($id)
-    {
-        $rs = Rs::find($id);
-        $userid = Rs::find($id)->user[0]->id;
-        $data_rko = Rs::find($id)->rko;
-
-        DB::update('update rko_user set submitted = 2 where user_id = ? and submitted = 1 and approved = 0', [$userid]);
-        DB::update('update rko_user set approved = 1 where user_id = ? and submitted = 2 and approved = 0', [$userid]);
-
-        return back()->with('rs', $rs)->with('data_rko', $data_rko)->with('sukses', 'Permintaan RKO berhasil diproses.');
-    }
-
-    public function decline($id)
-    {
-        $rs = Rs::find($id);
-        $userid = Rs::find($id)->user[0]->id;
-        $data_rko = Rs::find($id)->user[0]->rko;
-
-        DB::update('update rko_user set submitted = 2 where user_id = ? and submitted = 1 and approved = 0', [$userid]);
-        DB::update('update rko_user set approved = 2 where user_id = ? and submitted = 2 and approved = 0', [$userid]);
-
-        return back()->with('rs', $rs)->with('data_rko', $data_rko)->with('sukses', 'Permintaan RKO berhasil diproses.');
     }
 }

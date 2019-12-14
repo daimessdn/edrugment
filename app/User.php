@@ -43,11 +43,11 @@ class User extends Authenticatable
 
     public function rko()
     {
-        return $this->belongsToMany(Rko::class)->withPivot(['submitted','approved', 'produced']);
+        return $this->hasMany(Rko::class);
     }
 
     public function rs()
     {
-        return $this->belongsToMany(Rs::class);
-    }
+        return $this->belongsTo(Rs::class);
+    }   
 }

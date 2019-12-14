@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use App\Invoice;
 use App\User;
+use App\Rko;
 
 class Rs extends Model
 {
@@ -13,11 +15,16 @@ class Rs extends Model
 
     public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(User::class);
     }
 
     public function rko()
     {
-        return $this->belongsToMany(\App\Rko::class);
+        return $this->hasMany(Rko::class);
+    }
+
+    public function invoice()
+    {
+        return $this->hasMany(Invoice::class);
     }
 }

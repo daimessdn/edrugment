@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $data_rko = Auth::user()->rko;
-        return view('pages.dashboard', ['data_rko' => $data_rko]);
+        $user = Auth::user();
+        return view('pages.dashboard', ['user' => $user]);
     }
 }

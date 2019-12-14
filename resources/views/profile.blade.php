@@ -50,10 +50,13 @@
 									@if (auth()->user()->roleid == 0)
 										Administrator
 									@elseif (auth()->user()->roleid == 1)
-										Apoteker di {{ $usrs[0]->nama_rs }}
+										Apoteker di {{ auth()->user()->rs->nama_rs }}
 									@elseif (auth()->user()->roleid == 2)
 										Tender Produksi
 									@endif
+								</p>
+								<p>
+									<a href="/signout" class="btn btn-primary btn-sm">Logout</a>
 								</p>
 							</div>
 						</div>
