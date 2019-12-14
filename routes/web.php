@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/rko', 'RkoController@index');
     Route::get('/rko/history', 'RkoController@history');
     Route::get('/rko/history/{id}/qr', 'RkoController@qr');
+    Route::get('/rko/history/{id}/downloadPDF', 'RkoController@downloadPDF');
     Route::get('/rko/status', 'RkoController@status');
     Route::post('/rko/create', 'RkoController@create');
     Route::get('/rko/{id}/edit', 'RkoController@edit');

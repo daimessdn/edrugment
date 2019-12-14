@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Rko;
 use App\Rs;
+use App\Invoice;
+
+use PDF;
 
 use App\Imports\RKOImport;
 use App\Exports\RKOExport;
@@ -39,6 +42,15 @@ class RkoController extends Controller
         $inv_id = Auth::user()->rs->invoice()->where('id', '=', $id)->get();
 
         return view('images/qrcode.png');
+    }
+
+    public function downloadPDF($id)
+    {
+        $invoice = Invoice::find($id);
+
+        $pdf = PDF::loadview('pdf_invoice', ['invoice' => $invoice]);
+        
+        return $pdf->download($invoice->id.'.pdf');
     }
 
     // status RKO

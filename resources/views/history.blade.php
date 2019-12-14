@@ -36,6 +36,9 @@
                     <a href="{{ asset('QR/'.$inv->id.'.png') }}" class="btn btn-primary btn-sm">
                       LIHAT
                     </a>
+                    <a href="history/{{ $inv->id }}/downloadPDF" class="btn btn-success btn-sm" target="_blank">
+                      UNDUH PDF
+                    </a>
                   </td>
                 </tr>
               @endforeach
