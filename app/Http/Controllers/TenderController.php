@@ -37,9 +37,11 @@ class TenderController extends Controller
     public function manage()
     {
         $invoices = \App\Invoice::all()->where('tender_id', '=', Auth::id())->where('stage', '=', 3);
+        $progress = \App\Invoice::all()->where('tender_id', '=', Auth::id())->where('stage', '=', 4);
         $count = count($invoices);
+        $progcount = count($progress);
 
-        return view('pengolahan')->with('invoices', $invoices)->with('count', $count);
+        return view('pengolahan')->with('invoices', $invoices)->with('progress', $progress)->with('count', [$count, $progcount]);
     }
 
     public function addQuantity($inv_id, $rko_id, Request $request)

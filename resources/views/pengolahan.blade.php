@@ -22,11 +22,11 @@
 
         {{-- tabel rencana kebutuhan obat --}}
         <div class="col-12">
-          @if ($count != 0)
+          @if ($count[0] != 0)
             @foreach ($invoices as $inv)
+              <h6><span class="badge badge-warning">INVOICE #{{ $prog->id }}</span></h6>
               <h4 class="mt-2 mb-2">
-                <span class="badge badge-warning">INVOICE #{{ $inv->id }}</span> : 
-                {{ $inv->rs->nama_rs }}
+                {{ $prog->rs->nama_rs }}
               </h4>
               <table class="table table-dark table-responsive mb-2" style="overflow-x: auto; font-size: 13px; max-height: 360px">
                 <tr>
@@ -70,6 +70,56 @@
             @endforeach
           @else
             <p>Anda belum mengambil pesanan. Silahkan pilih pesanan di laman "Ambil Pesanan Produksi"</p>
+          @endif
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <h1>Produksi Obat</h1>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        @if (session('sukses'))
+          <div class="col-12">
+            <div class="alert alert-success mt-2">
+              {{ session('sukses') }}
+            </div>
+          </div>
+        @endif
+
+        {{-- tabel rencana kebutuhan obat --}}
+        <div class="col-12">
+          @if ($count[1] != 0)
+            @foreach ($progress as $prog)
+              <h6><span class="badge badge-warning">INVOICE #{{ $prog->id }}</span></h6>
+              <h4 class="mt-2 mb-2">
+                {{ $prog->rs->nama_rs }}
+              </h4>
+              <p class="mb-2">
+                Estimasi produksi: {{ $prog->estimated }} hari<br />
+                (sejak {{ $prog->started_at }} - {{ $prog->finished_at }})
+              </p>
+              <table class="table table-dark mb-2" style="overflow-x: auto; font-size: 13px; max-height: 360px">
+                <tr>
+                  <th>Nama</th>
+                  <th>Periode</th>
+                  <th>Jumlah produksi</th>
+                </tr>
+
+                @foreach ($prog->rko as $rko)
+                  <tr>
+                    <td>{{ $rko->med_name }}</td>
+                    <td>{{ $rko->periode1 }} - {{ $rko->periode2 }}</td>
+                    <td>{{ $rko->quantity }}</td>
+                  </tr>
+                @endforeach
+              </table>
+            @endforeach
+          @else
+            <p>Belum ada produksi yang sedang berlangsung.</p>
           @endif
         </div>
       </div>
