@@ -26,7 +26,7 @@
               <tr>
                 <th>INVOICE #</th>
                 <th>Tanggal Dibuat</th>
-                <th>QR CODE</th>
+                <th></th>
               </tr>
               @foreach ($invoices as $inv)
                 <tr>
