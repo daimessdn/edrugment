@@ -85,7 +85,7 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">
-              <h3>Alamat Rumah Sakit</h3>
+              <h3>Peta Rumah Sakit</h3>
             </div>
             <div class="card-body">
               <iframe src="{{ $rs->map_url }}"
