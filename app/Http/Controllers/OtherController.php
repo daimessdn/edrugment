@@ -8,7 +8,6 @@ use App\Exports\UserExport;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -59,7 +58,7 @@ class OtherController extends Controller
         DB::update('update invoice set stage = 2 where id = ?', [$inv->id]);
         
         DB::insert('insert into messages (content, role_id, rs_id) values (?, ?, ?)', [
-            'RKO dengan nomor invoice #'.$inv->id.' dan rumah sakit '.Auth::user()->rs->nama_rs.' ditolak.',
+            'RKO dengan nomor invoice #'.$inv->id.' dan rumah sakit '.$inv->rs->nama_rs.' ditolak.',
             1, $inv->rs->id 
         ]);
 
