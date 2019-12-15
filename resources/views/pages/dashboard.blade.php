@@ -100,7 +100,7 @@
                 </tr>
                 <tr>
                   <td>
-                    <strong>Mengganti kata sandi</strong> : Anda dapat mengganti kata sandi Anda dengan menuju laman <a href="/profil">"Profil Tender Produksi"</a>, lalu mengisikan kata sandi baru Anda.
+                    <strong>Mengganti kata sandi</strong> : Anda dapat mengganti kata sandi Anda dengan menuju laman <a href="/profil">"Profil Administrator"</a>, lalu mengisikan kata sandi baru Anda.
                   </td>
                 </tr>
               </table>
